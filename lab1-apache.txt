@@ -1,0 +1,15 @@
+3-
+sudo nano .htaccess
+uthType Basic
+AuthUserFile "/var/www/.htpasswd"
+require valid-user
+
+sudo htpasswd -c .htpasswd zahra
+
+sudo vi /etc/httpd/conf/httpd.conf
+<Directory "/var/www">
+    AllowOverride all
+    # Allow open access:
+    Require all granted
+</Directory>
+systemctl restart httpd

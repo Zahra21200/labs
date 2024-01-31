@@ -1,0 +1,17 @@
+3-sudo vi .htacess
+a-
+RewriteCond "%{QUERY_STRING}" "forbidden"
+RewriteRule ".*" "page.html  [L]
+
+b-
+RewriteCond "%{QUERY_STRING}" .+
+RewriteRule "^.* /web1/*" [R=301,L]
+
+c-
+RewriteCond %{QUERY_STRING} "val"
+RewriteRule "^page1.html /page2.html" [R=301,L]
+d-
+RewriteCond %{QUERY_STRING} var=(.+)
+RewriteRule ^page1$ /page2?var=%1
+e-
+RewriteRule ^example/([^/]+)/([^/]+)$ /something.cgi? arg=$1&other=$2
